@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LoanManagementApp.Models.Loan>
+
+@{
+    ViewData["Title"] = "Préstamos";
+}
+
+<h1>Préstamos Activos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo Préstamo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Monto</th>
+            <th>Fecha Préstamo</th>
+            <th>Vencimiento</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Client!.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                <td>@Html.DisplayFor(modelItem => item.LoanDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                <td>
+                    @if (item.IsOverdue)
+                    {
+                        <span class="badge bg-danger">Moroso</span>
+                    }
+                    else if (item.IsPaid)
+                    {
+                        <span class="badge bg-success">Pagado</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pendiente</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

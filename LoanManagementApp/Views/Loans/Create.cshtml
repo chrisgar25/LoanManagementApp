@@ -1,0 +1,25 @@
+﻿@model LoanManagementApp.Models.Loan
+
+@{
+    ViewData["Title"] = "Nuevo Préstamo";
+}
+
+<h1>Registrar Nuevo Préstamo</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="ClientId" class="control-label">Cliente</label>
+        <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label">Monto</label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DueDate" class="control-label">Fecha Vencimiento</label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Crear Préstamo</button>
+</form>

@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Inicio - Sistema de Préstamos";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">🏦 Gestión de Préstamos</h1>
+        <p class="lead">Sistema integral para administración de clientes y préstamos</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- Tarjeta de Clientes -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-lg h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">👥 Clientes</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Gestión completa de clientes:</p>
+                    <ul class="list-unstyled">
+                        <li>✔️ Registrar nuevos clientes</li>
+                        <li>✔️ Editar información existente</li>
+                        <li>✔️ Historial completo</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a asp-controller="Clients" asp-action="Index"
+                       class="btn btn-primary" role="button">
+                       <i class="bi bi-people-fill"></i> CLientes
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Préstamos -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-lg h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">💰 Préstamos</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Operaciones con préstamos:</p>
+                    <ul class="list-unstyled">
+                        <li>✔️ Nuevos préstamos</li>
+                        <li>✔️ Seguimiento de pagos</li>
+                        <li>✔️ Reportes de morosidad</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a asp-controller="Loans" asp-action="Index"
+                       class="btn btn-success btn-lg btn-block">
+                        Ir a Préstamos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Fondos -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-info">
+                <div class="card-body text-center">
+                    <h5 class="card-title">💵 Fondos Disponibles</h5>
+                    <p class="card-text display-4 font-weight-bold">
+                        @ViewBag.AvailableMoney
+                    </p>
+                    <a asp-controller="AvailableMoney" asp-action="Index"
+                       class="btn btn-info btn-lg">
+                        Administrar Fondos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .display-4 {
+        font-weight: 300;
+    }
+</style>

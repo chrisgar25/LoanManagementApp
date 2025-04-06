@@ -1,0 +1,15 @@
+﻿@model LoanManagementApp.Models.AvailableMoney
+
+@{
+    ViewData["Title"] = "Fondos Disponibles";
+}
+
+<h1>Fondos Disponibles para Préstamos</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Monto Actual</h4>
+        <p class="card-text display-4">@Model.Amount.ToString("C")</p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Actualizar Fondos</a>
+    </div>
+</div>
